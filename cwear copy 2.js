@@ -18,6 +18,11 @@ function closeSidebar() {
 }
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+const getNumericPrice = (value) => {
+    const match = value.match(/(\d+(\.\d+)?)/);
+    return match ? parseFloat(match[1]) : 0;
+};
+
 function addToCart(item) {
     cart.push(item);
     console.log(cart)
@@ -37,7 +42,7 @@ addToCartButtons.forEach((button) => {
                 color: productElement.getAttribute('data-color'),
                 type: productElement.getAttribute('data-product-type'),
                 name: productElement.querySelector('h3').textContent,
-                price: parseFloat(productElement.querySelector('.product-price').textContent.replace(/[^\d.]/g, '')),
+                price: getNumericPrice(productElement.querySelector('.product-price').textContent),
                 img: productElement.querySelector('img').getAttribute('src'),
             };
 
