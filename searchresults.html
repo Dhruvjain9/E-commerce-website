@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="search.css">
+</head>
+<body>
+    <div class="sidebar right">
+        <div class="sidebar-header">
+            <span>Menu</span>
+            <button class="close-btn" onclick="closeSidebar()">&times;</button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-lang="en">Home</a></li>
+            <li><a href="cwear.html" data-lang="en">Casual wear</a></li>
+            <li><a href="fwear.html" data-lang="en">Formal wear</a></li>
+            <li><a href="shoes.html" data-lang="en">Shoes & socks</a></li>
+            <li><a href="csoon.html" data-lang="en">Coming Soon</a></li>
+            <li><a href="cart.html" data-lang="en">Cart</a></li>
+        </ul>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="2.png" class="logo" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search">
+                    <button type="submit" id="search-button">
+                        <img src="1305793-removebg-preview.png" class="search-icon" alt="Search">
+                    </button>
+                </div>
+            </div>
+            <button class="open-sidebar" onclick="openSidebar()" id="open-sidebar">&#9776;</button>
+        </nav>
+    </header>
+    
+    <section>
+        <div id="loading-screen">
+            <div class="loader"></div>
+        </div>
+    </section>
+    <section>
+        <div class="filter">
+            <div class="filter-section">
+                <h2 data-lang="en">Filters</h2>
+                <label for="price-range" data-lang="en">Price Range:</label>
+                <input type="range" id="price-range" min="10" max="100" step="1" value="100" data-lang="en">
+                <span id="price-display" data-lang="en">Max Price: ₹100</span>
+                <label data-lang="en">Color:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="color" value="all">All</label>
+                    <label><input type="checkbox" name="color" value="white">White</label>
+                    <label><input type="checkbox" name="color" value="blue">Blue</label>
+                    <label><input type="checkbox" name="color" value="green">Green</label>
+                    <label><input type="checkbox" name="color" value="black">Black</label>
+                    <label><input type="checkbox" name="color" value="yellow">Yellow</label>
+                    <label><input type="checkbox" name="color" value="multi-color">Multi-color</label>
+                    <label><input type="checkbox" name="color" value="beige">Beige</label>
+                    <label><input type="checkbox" name="color" value="brown">Brown</label>
+                    <label><input type="checkbox" name="color" value="grey">Grey</label>
+                    <label><input type="checkbox" name="color" value="peach">Peach</label>
+                    <label><input type="checkbox" name="color" value="pink">Pink</label>
+                </div>
+
+                <label data-lang="en">Product Type:</label>
+                <select id="product-type-filter">
+                    <option value="all">All</option>
+                    <option value="Shirts">Shirts</option>
+                    <option value="T-Shirt">T-Shirts</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Pants">Pants</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Socks">Socks</option>
+                </select>
+                <button id="apply-button" data-lang="en">Apply</button>
+
+            </div>
+        </div>
+        <section id="search-query-container">
+            <h1 id="search-query">Search Results</h1>
+            <div id="results-container">
+            </div>
+        </section>
+        <div class="product-showcase">
+            <div class="noproductsToShow" id="noproductsToShow" style="display: none;">
+                <p data-lang="en">No products to show! Try reducing the filter.</p>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="Shirts" data-product-id="101">
+                <img src="products/shirts/shirt1.jpg" alt="White Shirt">
+                <h3 data-lang="en">White Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="301">
+                <img src="products/jeans/jean (1).jpeg" alt="Blue Jeans 1">
+                <h3 data-lang="en">Blue Jeans</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="T-Shirt" data-product-id="201">
+                <img src="products/tshirt/tshirt1.jpg" alt="Blue T-Shirt">
+                <h3 data-lang="en">Blue T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="green" data-product-type="Shirts" data-product-id="102">
+                <img src="products/shirts/shirt2.jpg" alt="Green Shirt">
+                <h3 data-lang="en">Green Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="302">
+                <img src="products/jeans/jean (2).jpeg" alt="Blue Jeans 2">
+                <h3 data-lang="en">Blue Jeans 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="T-Shirt" data-product-id="202">
+                <img src="products/tshirt/tshirt2.jpg" alt="Black T-Shirt 1">
+                <h3 data-lang="en">Black T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="yellow" data-product-type="Shirts" data-product-id="103">
+                <img src="products/shirts/shirt3.jpeg" alt="Yellow Shirt">
+                <h3 data-lang="en">Yellow Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="303">
+                <img src="products/jeans/jean (3).jpeg" alt="Blue Jeans 3">
+                <h3 data-lang="en">Blue Jeans 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="T-Shirt" data-product-id="203">
+                <img src="products/tshirt/tshirt3.jpg" alt="White T-Shirt">
+                <h3 data-lang="en">White T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Shirts" data-product-id="104">
+                <img src="products/shirts/shirt4.jpg" alt="Blue Shirt">
+                <h3 data-lang="en">Blue Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="Shirts" data-product-id="105">
+                <img src="products/shirts/shirt5.jpeg" alt="Blue Shirt">
+                <h3 data-lang="en">White Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="green" data-product-type="Shirts" data-product-id="106">
+                <img src="products/shirts/shirt6.jpeg" alt="Blue Shirt">
+                <h3 data-lang="en">Green Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="beige" data-product-type="Shirts" data-product-id="107">
+                <img src="products/shirts/shirt7.jpeg" alt="Blue Shirt">
+                <h3 data-lang="en">Beige Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="yellow" data-product-type="Shirts" data-product-id="108">
+                <img src="products/shirts/shirt8.jpeg" alt="Blue Shirt">
+                <h3 data-lang="en">Yellow Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="304">
+                <img src="products/jeans/jean (4).jpeg" alt="Blue Jeans 4">
+                <h3 data-lang="en">Blue Jeans 4</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="305">
+                <img src="products/jeans/jean (5).jpeg" alt="Blue Jeans 4">
+                <h3 data-lang="en">Blue Jeans 5</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="Black" data-product-type="Jeans" data-product-id="306">
+                <img src="products/jeans/jean (6).jpeg" alt="Blue Jeans 4">
+                <h3 data-lang="en">Black Jeans</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="307">
+                <img src="products/jeans/jean (7).jpeg" alt="Blue Jeans 4">
+                <h3 data-lang="en">Blue Jeans 6</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="T-Shirt" data-product-id="209">
+                <img src="products/tshirt/tshirt9.jpg" alt="Black T-Shirt 2">
+                <h3 data-lang="en">Black T-Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="T-Shirt" data-product-id="204">
+                <img src="products/tshirt/tshirt4.jpg" alt="Black T-Shirt 3">
+                <h3 data-lang="en">Black T-Shirt 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="orange" data-product-type="T-Shirt" data-product-id="205">
+                <img src="products/tshirt/tshirt5.jpg" alt="Black T-Shirt 2">
+                <h3 data-lang="en">Orange T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="T-Shirt" data-product-id="206">
+                <img src="products/tshirt/tshirt6.jpg" alt="Black T-Shirt 3">
+                <h3 data-lang="en">Black T-Shirt 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="T-Shirt" data-product-id="207">
+                <img src="products/tshirt/tshirt7.jpg" alt="Black T-Shirt 2">
+                <h3 data-lang="en">Black T-Shirt 4</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="T-Shirt" data-product-id="208">
+                <img src="products/tshirt/tshirt8.jpg" alt="Black T-Shirt 2">
+                <h3 data-lang="en">White T-Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="beige" data-product-type="T-Shirt" data-product-id="210">
+                <img src="products/tshirt/tshirt10.jpg" alt="Beige T-Shirt">
+                <h3 data-lang="en">Beige T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="T-Shirt" data-product-id="211">
+                <img src="products/tshirt/tshirt11.jpg" alt="Black T-Shirt 5">
+                <h3 data-lang="en">Black T-Shirt 5</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="T-Shirt" data-product-id="212">
+                <img src="products/tshirt/tshirt12.jpg" alt="White T-Shirt 3">
+                <h3 data-lang="en">White T-Shirt 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="T-Shirt" data-product-id="213">
+                <img src="products/tshirt/tshirt13.jpg" alt="Black T-Shirt 5">
+                <h3 data-lang="en">White T-Shirt 5</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="Shirts" data-product-id="401">
+                <img src="products/fshirts/fshirts (1).jpeg" alt="White Shirt 3">
+                <h3 data-lang="en">White Shirt 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹35</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Pants" data-product-id="501">
+                <img src="products/fpants/fpants (1).jpeg" alt="Blue Pants">
+                <h3 data-lang="en">Blue Pants</h3>
+                <p data-lang="en" class="product-price">Price: ₹25</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Shirts" data-product-id="402">
+                <img src="products/fshirts/fshirts (2).jpeg" alt="Blue Shirt 2">
+                <h3 data-lang="en">Blue Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹40</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Pants" data-product-id="502">
+                <img src="products/fpants/fpants (2).jpeg" alt="Black Pants">
+                <h3 data-lang="en">Black Pants</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="peach" data-product-type="Shirts" data-product-id="403">
+                <img src="products/fshirts/fshirts (3).jpeg" alt="Peach Shirt">
+                <h3 data-lang="en">Peach Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹45</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Pants" data-product-id="503">
+                <img src="products/fpants/fpants (3).jpeg" alt="Blue Pants 2">
+                <h3 data-lang="en">Blue Pants 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹20</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Pants" data-product-id="504">
+                <img src="products/fpants/fpants (4).jpeg" alt="Black Pants">
+                <h3 data-lang="en">Black Pants</h3>
+                <p data-lang="en" class="product-price">Price: ₹35</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Shirts" data-product-id="404">
+                <img src="products/fshirts/fshirts (4).jpeg" alt="Blue Shirt 3">
+                <h3 data-lang="en">Blue Shirt 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹25</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="grey" data-product-type="Pants" data-product-id="505">
+                <img src="products/fpants/fpants (5).jpeg" alt="Grey Pants">
+                <h3 data-lang="en">Grey Pants</h3>
+                <p data-lang="en" class="product-price">Price: ₹35</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="grey" data-product-type="Shirts" data-product-id="405">
+                <img src="products/fshirts/fshirts (5).jpeg" alt="Grey Shirt">
+                <h3 data-lang="en">Grey Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹45</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="beige" data-product-type="Pants" data-product-id="506">
+                <img src="products/fpants/fpants (6).jpeg" alt="Beige Pants">
+                <h3 data-lang="en">Beige Pants</h3>
+                <p data-lang="en" class="product-price">Price: ₹40</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Shirts" data-product-id="406">
+                <img src="products/fshirts/fshirts (6).jpeg" alt="Blue Shirt 4">
+                <h3 data-lang="en">Blue Shirt 4</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="green" data-product-type="Pants" data-product-id="507">
+                <img src="products/fpants/fpants (7).jpeg" alt="Green Pants">
+                <h3 data-lang="en">Green Pants</h3>
+                <p data-lang="en" class="product-price">Price: ₹35</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="brown" data-product-type="Pants" data-product-id="508">
+                <img src="products/fpants/fpants (9).jpeg" alt="Brown Pants">
+                <h3 data-lang="en">Brown Pants 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="pink" data-product-type="Shirts" data-product-id="407">
+                <img src="products/fshirts/fshirts (7).jpeg" alt="Pink Shirt">
+                <h3 data-lang="en">Pink Shirt</h3>
+                <p data-lang="en" class="product-price">Price: ₹45</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Shirts" data-product-id="408">
+                <img src="products/fshirts/fshirts (8).jpeg" alt="Blue Shirt 5">
+                <h3 data-lang="en">Blue Shirt 5</h3>
+                <p data-lang="en" class="product-price">Price: ₹45</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="grey" data-product-type="Shirts" data-product-id="409">
+                <img src="products/fshirts/fshirts (9).jpeg" alt="Grey Shirt 2">
+                <h3 data-lang="en">Grey Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹45</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Pants" data-product-id="509">
+                <img src="products/fpants/fpants (10).jpeg" alt="Black Pants 2">
+                <h3 data-lang="en">Black Pants 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹25</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Pants" data-product-id="510">
+                <img src="products/fpants/fpants (11).jpeg" alt="Black Pants 3">
+                <h3 data-lang="en">Black Pants 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div> 
+            <div class="product-block" data-color="beige" data-product-type="Pants" data-product-id="511">
+                <img src="products/fpants/fpants (12).jpeg" alt="Beige Pants 2">
+                <h3 data-lang="en">Beige Pants 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹30</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div> 
+            <div class="product-block" data-color="multi-color" data-product-type="Socks" data-product-id="601">
+                <img src="products/socks/socks (1).jpeg" alt="T-Shirt 1">
+                <h3 data-lang="en">Multi-color socks</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="Shoes" data-product-id="701">
+                <img src="products/shoes/shoes (1).jpeg" alt="White Shoes">
+                <h3 data-lang="en">White Shoes</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="beige" data-product-type="Shoes" data-product-id="702">
+                <img src="products/shoes/shoes (2).jpeg" alt="Beige Shoes">
+                <h3 data-lang="en">Beige Shoes</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="multi-color" data-product-type="Socks" data-product-id="602">
+                <img src="products/socks/socks (2).jpeg" alt="Multi-color Socks 2">
+                <h3 data-lang="en">Multi-color Socks 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="brown" data-product-type="Shoes" data-product-id="703">
+                <img src="products/shoes/shoes (3).jpeg" alt="Brown Shoes">
+                <h3 data-lang="en">Brown Shoes</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="brown" data-product-type="Socks" data-product-id="603">
+                <img src="products/socks/socks (3).jpeg" alt="Brown Socks">
+                <h3 data-lang="en">Brown Socks</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="white" data-product-type="Shoes" data-product-id="704">
+                <img src="products/shoes/shoes (4).jpeg" alt="White Shoes 2">
+                <h3 data-lang="en">White Shoes 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="multi-color" data-product-type="Socks" data-product-id="604">
+                <img src="products/socks/socks (4).jpeg" alt="Blue Socks">
+                <h3 data-lang="en">Multi-color Socks</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="brown" data-product-type="Shoes" data-product-id="705">
+                <img src="products/shoes/shoes (5).jpeg" alt="Black Shoes">
+                <h3 data-lang="en">Brown Shoes</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Socks" data-product-id="605">
+                <img src="products/socks/socks (5).jpeg" alt="Blue Socks">
+                <h3 data-lang="en">Blue Socks</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Shoes" data-product-id="706">
+                <img src="products/shoes/shoes (6).jpeg" alt="Black Shoes 2">
+                <h3 data-lang="en">Black Shoes</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Shoes" data-product-id="707">
+                <img src="products/shoes/shoes (7).jpeg" alt="Brown Shoes 2">
+                <h3 data-lang="en">Black Shoes 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="brown" data-product-type="Shoes" data-product-id="708">
+                <img src="products/shoes/shoes (8).jpeg" alt="Blue Shoes">
+                <h3 data-lang="en">Brown Shoes 2</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="blue" data-product-type="Shoes" data-product-id="709">
+                <img src="products/shoes/shoes (9).jpeg" alt="Black Shoes 3">
+                <h3 data-lang="en">Blue Shoes 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Shoes" data-product-id="710">
+                <img src="products/shoes/shoes (10).jpeg" alt="Brown Shoes 3">
+                <h3 data-lang="en">Black Shoes 3</h3>
+                <p data-lang="en" class="product-price">Price: ₹15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>            
+        </div>
+        <div id="added-to-cart" class="added-to-cart">
+            <div id="added-to-cart-text">Product has been added to Cart</div>
+        </div>
+    </section>
+    
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2 data-lang="en">Quick Links</h2>
+                <ul>
+                    <li><a href="index.html" data-lang="en">Home</a></li>
+                    <li><a href="cwear.html" data-lang="en">Casual Wear</a></li>
+                    <li><a href="fwear.html" data-lang="en">Formal Wear</a></li>
+                    <li><a href="shoes.html" data-lang="en">Shoes & Socks</a></li>
+                    <li><a href="csoon.html" data-lang="en">Coming Soon</a></li>
+                    <li><a href="cart.html" data-lang="en">Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2 data-lang="en">Contact Us</h2>
+                <p data-lang="en">123 Main Street, City</p>
+                <p data-lang="en">Email: info@urbanexstore.com</p>
+                <p data-lang="en">Phone: +1 (123) 456-7890</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 UrbaneX Store. All rights reserved.
+        </div>
+    </footer>
+    
+    <script src="searchresults.js"></script>
+    <script src="cwear.js"></script>
+    <script src="search.js"></script>   
+</body>
+</html>

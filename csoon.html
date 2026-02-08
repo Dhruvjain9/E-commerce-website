@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbaneX : Coming Soon</title>
+    <link rel="stylesheet" type="text/css" href="search.css">
+</head>
+<body>
+    <div class="sidebar right">
+        <div class="sidebar-header">
+            <span>Menu</span>
+            <button class="close-btn" onclick="closeSidebar()">&times;</button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html" data-lang="en">Home</a></li>
+            <li><a href="cwear.html" data-lang="en">Casual wear</a></li>
+            <li><a href="fwear.html" data-lang="en">Formal wear</a></li>
+            <li><a href="shoes.html" data-lang="en">Shoes & Socks</a></li>
+            <li><a href="csoon.html" data-lang="en">Coming Soon</a></li>
+            <li><a href="cart.html" data-lang="en">Cart</a></li>
+        </ul>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="2.png" class="logo" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search">
+                    <button type="submit" id="search-button">
+                        <img src="1305793-removebg-preview.png" class="search-icon" alt="Search">
+                    </button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="language-dropdown" style="display: none;">
+                    <label for="language-select" data-lang="en" style="display: none;">Choose Your Language:</label>
+                    <label for="language-select" data-lang="hi" style="display: none;">अपनी भाषा चुनें:</label>
+                    <select id="language-select" style="display: none;">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                </div>
+            </div>
+            <button class="open-sidebar" onclick="openSidebar()" id="open-sidebar">&#9776;</button>
+        </nav>
+    </header>
+    
+    <section>
+        <div id="loading-screen">
+            <div class="loader"></div>
+        </div>
+    </section>
+    <h1 class="heading">Coming Soon...</h1>
+    <div class="content">
+        <h2>Visual Try-On</h2>
+        <img src="visual_tryon.jpg" alt="Visual Try-On" width="400" height="300">
+        <p>
+            Visual Try-On is a cutting-edge application of computer vision technology in the world of e-commerce. It allows customers to virtually try on clothing, accessories, and even makeup before making a purchase. Here's how it works:
+        </p>
+        <ol>
+            <li>Using a device's camera, the customer can see themselves on the screen in real-time.</li>
+            <li>The computer vision system accurately detects the customer's body and facial features.</li>
+            <li>Virtual items, such as clothing or makeup, are superimposed onto the customer's image in real-time.</li>
+            <li>Customers can see how the items fit and look on them, helping them make more informed buying decisions.</li>
+        </ol>
+        <p>
+            Visual Try-On not only enhances the shopping experience but also reduces the likelihood of returns since customers can visualize the products on themselves accurately.
+        </p>
+
+        <h2>Augmented Reality (AR)</h2>
+        <img src="augmented_reality.jpg" alt="Augmented Reality" width="400" height="300">
+        <p>
+            Augmented Reality is another fascinating application of computer vision in e-commerce. AR integrates digital content with the real world, providing customers with immersive experiences. Here are some key aspects of AR in e-commerce:
+        </p>
+        <ol>
+            <li>AR allows customers to view products in their own environment through their smartphone or tablet cameras.</li>
+            <li>For example, customers can place virtual furniture in their living room or try out different paint colors on their walls.</li>
+            <li>This technology bridges the gap between online and offline shopping, making it more interactive and engaging.</li>
+            <li>AR also enables interactive product demonstrations, helping customers understand complex products better.</li>
+        </ol>
+        <p>
+            AR is revolutionizing the way customers interact with products and is particularly popular in industries like furniture, home decor, and fashion.
+
+        </p>
+
+        <h2>Search by Image</h2>
+        <img src="search_by_image.jpg" alt="Search by Image" width="400" height="300">
+        <p>
+            Search by Image is a feature that simplifies the online shopping experience by using computer vision. Instead of typing in keywords or product names, customers can upload or take a photo of an item and search for similar products. Here's how it works:
+        </p>
+        <ol>
+            <li>Customers take a picture of an item they like or have seen in the real world.</li>
+            <li>The computer vision system analyzes the image, identifying key features and characteristics.</li>
+            <li>Based on the analysis, the e-commerce platform presents products that closely match the image's content.</li>
+            <li>Customers can find the exact item or discover similar products, making the shopping process more convenient and efficient.</li>
+        </ol>
+        <p>
+            Search by Image is a powerful tool for finding products that may be challenging to describe in words, and it's especially valuable for fashion and home decor.
+
+        </p>
+        <h1>FAQs (Frequently Asked Questions)</h1>
+        <li>Q: Can computer vision enhance personalization in e-commerce?</li>
+        <ol><p>A: Yes, computer vision helps analyze customer interactions with visual content, enabling businesses to offer personalized recommendations, curated content, and tailored shopping experiences.</p></ol>
+        <li>Q: How does computer vision facilitate virtual try-on experiences?</li>
+        <ol><p>A: By leveraging augmented reality and computer vision, customers can virtually try on products using their devices' cameras, creating an immersive and engaging shopping experience.</p></ol>
+        <li>Q: What role does computer vision play in supply chain management?</li>
+        <ol><p>A: Computer vision algorithms can analyze product images and videos to track inventory levels, detect out-of-stock items, and optimize supply chain processes, leading to improved efficiency.</p></ol>
+        <li>Q: What are the challenges in implementing computer vision in e-commerce?</li>
+        <ol><p>A: Challenges include obtaining high-quality training data, managing computational requirements, and ensuring data privacy and security while leveraging computer vision technologies.</p></ol>
+        <li>Q: How does computer vision improve product discovery in e-commerce?</li>
+        <ol><p>A: Computer vision enables visual search capabilities, allowing customers to search for products using images instead of textual queries, leading to more intuitive and accurate results.</p></ol>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2 data-lang="en">Quick Links</h2>
+                <ul>
+                    <li><a href="index.html" data-lang="en">Home</a></li>
+                    <li><a href="cwear.html" data-lang="en">Casual Wear</a></li>
+                    <li><a href="fwear.html" data-lang="en">Formal Wear</a></li>
+                    <li><a href="shoes.html" data-lang="en">Shoes & Socks</a></li>
+                    <li><a href="csoon.html" data-lang="en">Coming Soon</a></li>
+                    <li><a href="cart.html" data-lang="en">Cart</a></li>
+        
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2 data-lang="en">Contact Us</h2>
+                <p data-lang="en">123 Main Street, City</p>
+                <p data-lang="en">Email: info@urbanexstore.com</p>
+                <p data-lang="en">Phone: +1 (123) 456-7890</p>
+
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 UrbaneX Store. All rights reserved.
+        </div>
+    </footer>
+    
+    <script src="search.js"></script>   
+    <script src="script.js"></script>
+</body>
+</html>
+
