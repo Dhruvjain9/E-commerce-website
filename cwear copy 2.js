@@ -46,6 +46,11 @@ function showAddedToCart() {
     }, 2500);
 }
 
+const getNumericPrice = (value) => {
+    const match = value.match(/(\d+(\.\d+)?)/);
+    return match ? parseFloat(match[1]) : 0;
+};
+
 function addToCart(item) {
     cart.push(item);
     console.log(cart)

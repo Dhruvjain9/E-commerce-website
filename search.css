@@ -295,6 +295,21 @@ search-bar button:hover {
     background-color: var(--accent-strong);
 }
 
+#apply-button {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 999px;
+    margin-top: 10px;
+}
+
+#apply-button:hover {
+    background-color: var(--accent-strong);
+}
+
   
 .product-block {
     text-align: center;
