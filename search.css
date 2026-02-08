@@ -1,85 +1,106 @@
+:root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #0f172a;
+    --accent: #4f46e5;
+    --accent-soft: #e0e7ff;
+    --border: #e5e7eb;
+    --shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
 /* Add styles for the right sidebar */
 .sidebar.right {
     width: 0;
     height: 100%;
     position: fixed;
     top: 0;
-    right: -250px; /* Initially hidden on the right */
-    background-color: #111;
+    right: -280px;
+    background: #0f172a;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.4s ease;
+    z-index: 20;
 }
 
 .sidebar.right .sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #333;
+    padding: 16px 20px;
+    background-color: #111827;
     color: #fff;
 }
 
 .sidebar.right .sidebar-header button {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 26px;
     color: #fff;
     cursor: pointer;
 }
 
 .sidebar.right .sidebar-links {
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .sidebar.right .sidebar-links a {
     display: block;
-    color: #fff;
-    padding: 10px 20px;
+    color: #e5e7eb;
+    padding: 12px 24px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .sidebar.right .sidebar-links a:hover {
-    background-color: #444;
+    background-color: rgba(79, 70, 229, 0.2);
+    color: #fff;
 }
 
-/* Rest of your styles */
-
-/* Add a style for the open menu button */
 .open-sidebar {
-    background: none;
+    background: rgba(255, 255, 255, 0.12);
     border: none;
-    font-size: 24px;
+    font-size: 22px;
     color: #fff;
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    margin-top: 27px;
-    margin-right: 10px;
+    top: 16px;
+    right: 16px;
+    padding: 8px 12px;
+    border-radius: 10px;
 }
 
-
-/* Navbar styles */
 header {
-    background-color: #000;
+    background: linear-gradient(135deg, #0f172a, #1f2937);
     color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 nav {
     display: flex;
     align-items: center;
+    gap: 24px;
+    padding: 14px 24px;
 }
 
 .logo {
-    max-height: 80px;
-    margin-left: 20px;
-    margin-right: 150px;
+    max-height: 64px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .nav-center {
@@ -90,30 +111,37 @@ nav {
 .search-bar {
     display: flex;
     align-items: center;
+    gap: 10px;
+    justify-content: center;
 }
 
 .search-bar input {
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+    border: 1px solid transparent;
+    padding: 10px 18px;
+    border-radius: 999px;
+    width: min(360px, 70vw);
+    font-size: 14px;
 }
 
 .search-bar button {
-    background-color: #333;
+    background-color: #111827;
     color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 10px 14px;
+    border-radius: 999px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #374151;
 }
 
 .search-icon {
-    max-width: 15px;
-    max-height: 15px;
+    max-width: 16px;
+    max-height: 16px;
 }
 
-/* Media Query for smaller screens */
 @media (max-width: 768px) {
     .open-sidebar {
         display: block;
@@ -123,221 +151,227 @@ nav {
     }
 }
 
-/* Expand the sidebar on smaller screens */
 @media (max-width: 768px) {
     .sidebar {
-        width: 250px;
+        width: 260px;
     }
-}
-
-.cart a {
-    display: flex;
-    align-items: center;
-    text-decoration: none; /* Remove underline on the cart link */
-    position: relative; /* Set the anchor as a relative container */
-}
-
-.cart-image {
-    max-width: 40px;
-    max-height: 40px;
-}
-
-.cart-items {
-    background-color: #3498db;
-    color: #fff;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute; /* Set the items count as an absolute element */
-    top: -8px; /* Adjust the top position to place it inside the cart image */
-    left: 7px;
-}
-
-.search-bar img {
-    max-width: 15px;
-    max-height: 15px;
-}
-
-search-bar button:hover {
-    background-color: #444;
 }
 
 .filter {
     float: left;
-    width: 250px; /* Adjust the width as needed */
-    background-color: #f0f0f0; /* Filter background color */
+    width: 260px;
+    background-color: var(--surface);
     padding: 20px;
-    border-right: 1px solid #ccc; /* Add a border to separate filter from products */
-  }
-  
-  /* Filter section heading style */
-  .filter h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333; /* Text color */
-  }
-  
-  /* Price range slider */
-  #price-range {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-/* Checkbox styles */
-.checkbox-group {
-    margin: 5px 0;
-  }
-  
-  .checkbox-group label {
-    display: block;
-    margin: 3px 0;
-  }
-  
-  /* Additional styling for buttons, if needed */
-  .filter-button {
-    background-color: #007bff; /* Blue button color, you can change this */
-    color: #fff; /* White text color */
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .filter-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-/* Price range slider */
-#price-range {
-    width: 100%;
-  }
-/* Set a specific height for the content wrapper */
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  min-height: calc(100vh - 100px); /* Adjust the height based on your header and footer heights */
-}
-  
-/* Product blocks */
-.product-showcase {
-  /* Ensure space to the right of the filter */
-  margin-left: 270px;
-  display: flex;
-  flex-wrap: wrap;
-  /* Add any additional styling for product showcasing here */
+    border-right: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+    margin: 24px 16px 0 24px;
+    position: sticky;
+    top: 110px;
+    height: fit-content;
 }
 
-  
+.filter h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+#price-range {
+    width: 100%;
+    margin-bottom: 10px;
+    accent-color: var(--accent);
+}
+
+.checkbox-group {
+    margin: 5px 0;
+}
+
+.checkbox-group label {
+    display: block;
+    margin: 3px 0;
+    color: var(--muted);
+}
+
+#apply-button {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 12px;
+}
+
+#apply-button:hover {
+    background-color: #4338ca;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: calc(100vh - 100px);
+}
+
+.product-showcase {
+    margin-left: 320px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    padding: 24px 32px 40px 0;
+}
+
 .product-block {
     text-align: center;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 200px;
-    background-color: #fff; /* Product block background color */
-  }
-  .product-block img{
-    max-width: 150px;
-    max-height: 175px;
-  }
-  
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.product-block:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
+
+.product-block img {
+    max-width: 160px;
+    max-height: 180px;
+    object-fit: cover;
+}
+
 .add-to-cart-button {
-    background-color: #007bff; /* Blue button color, you can change this */
-    color: #fff; /* White text color */
-    padding: 10px;
+    background-color: var(--accent);
+    color: #fff;
+    padding: 10px 12px;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
-  }
-  
+    width: 100%;
+    margin-top: 10px;
+}
+
 .add-to-cart-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
+    background-color: #4338ca;
+}
 
 #added-to-cart {
     position: fixed;
     display: none;
-    width: 20%;
-    height: 10%;
-    padding-top: 10px;
-    padding-right: 10px;
-    top: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.856);
-    cursor: pointer;
-  }
-#added-to-cart-text{
-    font-style: bold;
-    font-size: large;
-    padding-top: 7px;
+    width: 240px;
+    height: auto;
+    padding: 14px;
+    top: 16px;
+    right: 16px;
+    background-color: rgba(15, 23, 42, 0.9);
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+#added-to-cart-text {
+    font-weight: 600;
+    font-size: 14px;
     text-align: center;
 }
+
+#search-query-container {
+    margin: 24px 24px 0 320px;
+    background: var(--surface);
+    padding: 16px 20px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    max-height: 300px;
+    background-color: #0f172a;
+    color: #e5e7eb;
+    padding: 30px 0 20px;
+    margin-top: 40px;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .footer-section {
     flex: 1;
     padding: 0 20px;
+    min-width: 220px;
 }
 
 .footer-section h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #fff;
 }
 
 .footer-section ul {
     list-style: none;
     padding: 0;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .footer-section ul li {
-    margin-bottom: 5px;
-    font-size: 15px;
+    margin-bottom: 8px;
 }
 
 .footer-section a {
-    color: #fff;
+    color: #cbd5f5;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-section a:hover {
-    color: #3498db;
+    color: #fff;
 }
 
 .copyright {
     text-align: center;
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 13px;
+    color: #94a3b8;
 }
-/* Loader style */
+
 .loader {
-    border: 4px solid #f3f3f3; /* Light gray border */
-    border-top: 4px solid #007bff; /* Blue border for animation */
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--accent);
     border-radius: 50%;
-    width: 20px; /* Adjust the width and height as needed */
-    height: 20px;
-    animation: spin 1s linear infinite; /* Rotation animation */
-    margin: 0 auto; /* Center align the loader */
-  }
-  
-  /* Animation keyframes for the loader */
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
+    width: 22px;
+    height: 22px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1024px) {
+    .filter {
+        position: static;
+        width: auto;
+        margin: 24px;
+    }
+
+    .product-showcase {
+        margin-left: 0;
+        padding: 0 24px 40px;
+    }
+
+    #search-query-container {
+        margin: 24px;
+    }
+}
