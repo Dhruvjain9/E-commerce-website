@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbaneX : Shoes & Socks</title>
+    <title>UrbaneX : Casual Wear</title>
     <link rel="stylesheet" type="text/css" href="search.css">
 </head>
 <body>
@@ -35,7 +35,6 @@
                         <img src="1305793-removebg-preview.png" class="search-icon" alt="Search">
                     </button>
                 </div>
-            </div>
             <button class="open-sidebar" onclick="openSidebar()" id="open-sidebar">&#9776;</button>
         </nav>
     </header>
@@ -52,125 +51,139 @@
                 <label for="price-range" data-lang="en">Price Range:</label>
                 <input type="range" id="price-range" min="10" max="100" step="1" value="100" data-lang="en">
                 <span id="price-display" data-lang="en">Max Price: $100</span>
-                <!-- Color filter checkboxes -->
                 <label data-lang="en">Color:</label>
                 <div class="checkbox-group">
                     <label><input type="checkbox" name="color" value="all">All</label>
                     <label><input type="checkbox" name="color" value="white">White</label>
-                    <label><input type="checkbox" name="color" value="multi-color">Multi-color</label>
-                    <label><input type="checkbox" name="color" value="beige">Beige</label>
-                    <label><input type="checkbox" name="color" value="brown">Brown</label>
                     <label><input type="checkbox" name="color" value="blue">Blue</label>
+                    <label><input type="checkbox" name="color" value="green">Green</label>
                     <label><input type="checkbox" name="color" value="black">Black</label>
-
+                    <label><input type="checkbox" name="color" value="yellow">Yellow</label>                    
                 </div>
 
-                <!-- Product Type filter dropdown -->
                 <label data-lang="en">Product Type:</label>
                 <select id="product-type-filter">
                     <option value="all">All</option>
-                    <option value="Shoes">Shoes</option>
-                    <option value="Socks">Socks</option>
+                    <option value="Casual Shirts">Casual Shirts</option>
+                    <option value="Casual T-Shirt">Casual T-Shirts</option>
+                    <option value="Jeans">Jeans</option>
                 </select>
                 <button id="apply-button" data-lang="en">Apply</button>
 
-                <!-- Additional filter options can be added here -->
             </div>
         </div>
+
         <div class="product-showcase">
             <div class="noproductsToShow" id="noproductsToShow" style="display: none;">
                 <p data-lang="en">No products to show! Try reducing the filter.</p>
             </div>
-            <div class="product-block" data-color="white" data-product-type="Shoes" data-product-id="701">
-                <img src="products\shoes\shoes (1).jpeg" alt="White Shoes">
-                <h3 data-lang="en">White Shoes</h3>
-                <p data-lang="en" class="product-price">Price: $45</p>
-                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
-            </div>
-            <div class="product-block" data-color="multi-color" data-product-type="Socks" data-product-id="601">
-                <img src="products\socks\socks (1).jpeg" alt="Multi-color Socks">
-                <h3 data-lang="en">Multi-color Socks</h3>
-                <p data-lang="en" class="product-price">Price: $13</p>
-                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
-            </div>
-            <div class="product-block" data-color="beige" data-product-type="Shoes" data-product-id="702">
-                <img src="products\shoes\shoes (2).jpeg" alt="Beige Shoes">
-                <h3 data-lang="en">Beige Shoes</h3>
-                <p data-lang="en" class="product-price">Price: $65</p>
-                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
-            </div>
-            <div class="product-block" data-color="multi-color" data-product-type="Socks" data-product-id="602">
-                <img src="products\socks\socks (2).jpeg" alt="Multi-color Socks 2">
-                <h3 data-lang="en">Multi-color Socks 2</h3>
+            <div class="product-block" data-color="white" data-product-type="Casual Shirts" data-product-id="101">
+                <img src="products/shirts/shirt1.jpg" alt="White Casual Shirt">
+                <h3 data-lang="en">White Casual Shirt</h3>
                 <p data-lang="en" class="product-price">Price: $15</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="brown" data-product-type="Shoes" data-product-id="703">
-                <img src="products\shoes\shoes (3).jpeg" alt="Brown Shoes">
-                <h3 data-lang="en">Brown Shoes</h3>
-                <p data-lang="en" class="product-price">Price: $75</p>
+            
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="301">
+                <img src="products/jeans/jean (1).jpeg" alt="Blue Jeans">
+                <h3 data-lang="en">Blue Jeans 1</h3>
+                <p data-lang="en" class="product-price">Price: $20</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="brown" data-product-type="Socks" data-product-id="603">
-                <img src="products\socks\socks (3).jpeg" alt="Brown Socks">
-                <h3 data-lang="en">Brown Socks</h3>
-                <p data-lang="en" class="product-price">Price: $12</p>
+            
+            <div class="product-block" data-color="blue" data-product-type="Casual T-Shirt" data-product-id="201">
+                <img src="products/tshirt/tshirt1.jpg" alt="Blue Casual T-Shirt">
+                <h3 data-lang="en">Blue Casual T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="white" data-product-type="Shoes" data-product-id="704">
-                <img src="products\shoes\shoes (4).jpeg" alt="White Shoes 2">
-                <h3 data-lang="en">White Shoes 2</h3>
-                <p data-lang="en" class="product-price">Price: $80</p>
+            
+            <div class="product-block" data-color="green" data-product-type="Casual Shirts" data-product-id="102">
+                <img src="products/shirts/shirt2.jpg" alt="Green Casual Shirt">
+                <h3 data-lang="en">Green Casual Shirt</h3>
+                <p data-lang="en" class="product-price">Price: $20</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="multi-color" data-product-type="Socks" data-product-id="604">
-                <img src="products\socks\socks (4).jpeg" alt="Blue Socks">
-                <h3 data-lang="en">Multi-color Socks 3</h3>
-                <p data-lang="en" class="product-price">Price: $10</p>
+            
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="302">
+                <img src="products/jeans/jean (2).jpeg" alt="Blue Jeans">
+                <h3 data-lang="en">Blue Jeans 2</h3>
+                <p data-lang="en" class="product-price">Price: $30</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="black" data-product-type="Shoes" data-product-id="705">
-                <img src="products\shoes\shoes (7).jpeg" alt="Black Shoes">
-                <h3 data-lang="en">Black Shoes</h3>
-                <p data-lang="en" class="product-price">Price: $85</p>
+            
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="202">
+                <img src="products/tshirt/tshirt2.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 1</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="blue" data-product-type="Socks" data-product-id="605">
-                <img src="products\socks\socks (5).jpeg" alt="Grey Socks">
-                <h3 data-lang="en">Blue Socks</h3>
-                <p data-lang="en" class="product-price">Price: $11</p>
+            <div class="product-block" data-color="yellow" data-product-type="Casual Shirts" data-product-id="103">
+                <img src="products/shirts/shirt3.jpeg" alt="Yellow Casual Shirt">
+                <h3 data-lang="en">Yellow Casual Shirt</h3>
+                <p data-lang="en" class="product-price">Price: $20</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="black" data-product-type="Shoes" data-product-id="706">
-                <img src="products\shoes\shoes (6).jpeg" alt="Black Shoes 2">
-                <h3 data-lang="en">Black Shoes 2</h3>
-                <p data-lang="en" class="product-price">Price: $60</p>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="303">
+                <img src="products/jeans/jean (3).jpeg" alt="Blue Jeans">
+                <h3 data-lang="en">Blue Jeans 3</h3>
+                <p data-lang="en" class="product-price">Price: $30</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="brown" data-product-type="Shoes" data-product-id="707">
-                <img src="products\shoes\shoes (5).jpeg" alt="Brown Shoes 2">
-                <h3 data-lang="en">Brown Shoes 2</h3>
-                <p data-lang="en" class="product-price">Price: $70</p>
+            <div class="product-block" data-color="white" data-product-type="Casual T-Shirt" data-product-id="203">
+                <img src="products/tshirt/tshirt3.jpg" alt="White Casual T-Shirt">
+                <h3 data-lang="en">White Casual T-Shirt</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="blue" data-product-type="Shoes" data-product-id="708">
-                <img src="products\shoes\shoes (9).jpeg" alt="Blue Shoes">
-                <h3 data-lang="en">Blue Shoes</h3>
-                <p data-lang="en" class="product-price">Price: $45</p>
+            <div class="product-block" data-color="blue" data-product-type="Casual Shirts" data-product-id="104">
+                <img src="products/shirts/shirt4.jpg" alt="Blue Casual Shirt">
+                <h3 data-lang="en">Blue Casual Shirt</h3>
+                <p data-lang="en" class="product-price">Price: $20</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="black" data-product-type="Shoes" data-product-id="709">
-                <img src="products\shoes\shoes (10).jpeg" alt="Black Shoes 3">
-                <h3 data-lang="en">Black Shoes 3</h3>
-                <p data-lang="en" class="product-price">Price: $50</p>
+            <div class="product-block" data-color="blue" data-product-type="Jeans" data-product-id="304">
+                <img src="products/jeans/jean (4).jpeg" alt="Blue Jeans">
+                <h3 data-lang="en">Blue Jeans 4</h3>
+                <p data-lang="en" class="product-price">Price: $30</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
             </div>
-            <div class="product-block" data-color="brown" data-product-type="Shoes" data-product-id="710">
-                <img src="products\shoes\shoes (8).jpeg" alt="Brown Shoes 3">
-                <h3 data-lang="en">Brown Shoes 3</h3>
-                <p data-lang="en" class="product-price">Price: $90</p>
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="204">
+                <img src="products/tshirt/tshirt9.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 2</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
                 <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
-            </div>            
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="209">
+                <img src="products/tshirt/tshirt8.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 3</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="210">
+                <img src="products/tshirt/tshirt10.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 4</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="211">
+                <img src="products/tshirt/tshirt11.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 5</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="212">
+                <img src="products/tshirt/tshirt12.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 6</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
+            <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="213">
+                <img src="products/tshirt/tshirt13.jpg" alt="Black Casual T-Shirt">
+                <h3 data-lang="en">Black Casual T-Shirt 7</h3>
+                <p data-lang="en" class="product-price">Price: $15</p>
+                <button class="add-to-cart-button" data-lang="en">Add to Cart</button>
+            </div>
         </div>
         <div id="added-to-cart" class="added-to-cart">
             <div id="added-to-cart-text">Product has been added to Cart</div>
@@ -206,5 +219,6 @@
     <script src="cwear copy 2.js"></script>
     <script src="cwear.js"></script>
     <script src="search.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
