@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
     document.getElementById("loading-screen").style.display = "none";
-    const addedToCartOverlay = document.getElementById("added-to-cart");
+    const addedToCartOverlay = ensureAddedToCartOverlay();
     addedToCartOverlay.style.display="none";
 });
 function openSidebar() {
@@ -17,6 +17,34 @@ function closeSidebar() {
 
 }
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+const getNumericPrice = (value) => {
+    const match = value.match(/(\d+(\.\d+)?)/);
+    return match ? parseFloat(match[1]) : 0;
+};
+
+function ensureAddedToCartOverlay() {
+    let overlay = document.getElementById("added-to-cart");
+    if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.id = "added-to-cart";
+        const text = document.createElement("div");
+        text.id = "added-to-cart-text";
+        text.textContent = "Product has been added to Cart";
+        overlay.appendChild(text);
+        document.body.appendChild(overlay);
+    }
+    return overlay;
+}
+
+function showAddedToCart() {
+    const addedToCartOverlay = ensureAddedToCartOverlay();
+    addedToCartOverlay.style.display = "block";
+    addedToCartOverlay.setAttribute("aria-live", "polite");
+    setTimeout(() => {
+        addedToCartOverlay.style.display = "none";
+    }, 2500);
+}
 
 function addToCart(item) {
     cart.push(item);
@@ -37,19 +65,14 @@ addToCartButtons.forEach((button) => {
                 color: productElement.getAttribute('data-color'),
                 type: productElement.getAttribute('data-product-type'),
                 name: productElement.querySelector('h3').textContent,
-                price: productElement.querySelector('.product-price').textContent.replace('Price: $', ''),
+                price: getNumericPrice(productElement.querySelector('.product-price').textContent),
                 img: productElement.querySelector('img').getAttribute('src'),
             };
 
             // Add the product to the cart
             addToCart(product);
             console.log('Product added to cart:', product);
-            const addedToCartOverlay = document.getElementById("added-to-cart");
-            addedToCartOverlay.style.display="block";
-            function overlayHide(){
-                addedToCartOverlay.style.display="none";
-            };
-            setTimeout(overlayHide,3000);
+            showAddedToCart();
         }
     });
 });
