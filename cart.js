@@ -1,4 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const currencySymbol = "₹";
+    const formatCurrency = (value, includeDecimals = false) => {
+        const numericValue = Number(value) || 0;
+        return `${currencySymbol}${includeDecimals ? numericValue.toFixed(2) : numericValue}`;
+    };
+    const parsePrice = (value) => Number(String(value).replace(/[^\d.]/g, "")) || 0;
+    const getDeliveryCharge = () => {
+        const deliveryDateSelect = document.getElementById("delivery-date");
+        if (!deliveryDateSelect) {
+            return 0;
+        }
+        switch (deliveryDateSelect.value) {
+            case "today":
+                return 10;
+            case "tomorrow":
+                return 5;
+            default:
+                return 0;
+        }
+    };
     function addQuantityToCartItems() {
         const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         console.log(cartItems);
@@ -36,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(cartItems);
             for (const cartItem of cartItems) {
                 // Calculate the price based on the product price and quantity
-                const price = parseInt(cartItem.price) * cartItem.quantity;
+                const price = parsePrice(cartItem.price);
                 console.log(price);
                 // Create an object with the necessary properties
                 const Data = {
@@ -70,26 +90,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 const cartItem = cartItems[cartKey];
 
                 const productBlock = document.createElement("div");
-                productBlock.className = "product-block";
-
-                // Apply CSS flexbox to create the desired layout
-                productBlock.style.display = "flex";
-                productBlock.style.display = "inline-block"
-                productBlock.style.alignItems = "center";
-                productBlock.style.backgroundColor = "lightgray";
-                productBlock.style.border = "1px solid #000000";
+                productBlock.className = "product-block cart-item-row";
 
                 // Create the product image element
                 const productImage = document.createElement("img");
                 productImage.src = cartItem.img;
-                productImage.style.maxHeight = "175px";
-                productImage.style.maxWidth = "175px";
                 productImage.alt = cartItem.name;
-                productImage.style.border = "1px solid #000000";
+                productImage.className = "cart-item-image";
 
                 // Create a container for the product description
                 const descriptionContainer = document.createElement("div");
-                descriptionContainer.style.marginLeft = "20px"; // Adjust the spacing as needed
+                descriptionContainer.className = "cart-item-details";
                 // Create the product name element
                 const productName = document.createElement("h3");
                 productName.textContent = cartItem.name;
@@ -97,19 +108,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Create the product price element
                 const productPrice = document.createElement("p");
                 productPrice.className = "product-price";
-                productPrice.textContent = `Price: $${parseInt(cartItem.price)}`;
+                productPrice.textContent = `Price: ${formatCurrency(parsePrice(cartItem.price))}`;
 
                 // Create the "Remove from Cart" button
                 const removeFromCartButton = document.createElement("button");
-                removeFromCartButton.className = "remove-from-cart-button";
                 removeFromCartButton.textContent = "Remove from Cart";
                 removeFromCartButton.setAttribute("data-product-id", cartItem.id);
-                removeFromCartButton.style.backgroundColor = "#ff0000"; // Background color
-                removeFromCartButton.style.color = "#fff"; // Text color
-                removeFromCartButton.style.border = "none"; // Remove the default button border
-                removeFromCartButton.style.padding = "5px 10px"; // Padding for better visual appearance
-                removeFromCartButton.style.cursor = "pointer"; // Change cursor on hover
-                removeFromCartButton.style.marginRight = "10px";
 
                 // Add a click event listener to the "Remove from Cart" button
                 function removeFromCart(productId) {
@@ -153,16 +157,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 cartContainer.appendChild(productBlock);
 
                 // Calculate and update the total cost
-                totalCost += parseInt(cartItem.price) * cartItem.quantity;
+                totalCost += parsePrice(cartItem.price) * cartItem.quantity;
             }
             const cartTotal = document.getElementById('cart-total');
-            cartTotal.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+            cartTotal.textContent = `Total Cost: ${formatCurrency(totalCost, true)}`;
         } else {
             const noproductsToShow = document.createElement("h3");
             noproductsToShow.textContent = "No Products added in the Cart! Try adding some products.";
             cartContainer.appendChild(noproductsToShow);
             const cartTotal = document.getElementById('cart-total');
-            cartTotal.textContent = `Total Cost: $0`;
+            cartTotal.textContent = `Total Cost: ${formatCurrency(0, true)}`;
         }
     }
 
@@ -172,16 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to update the receipt with delivery charge and total cost
     function updateReceipt() {
         // Get the selected delivery option
-        const deliveryDateSelect = document.getElementById("delivery-date");
-        const selectedDeliveryOption = deliveryDateSelect.options[deliveryDateSelect.selectedIndex].text;
-
-        // Calculate the delivery charge based on the selected option
-        let deliveryCharge = 0;
-        if (selectedDeliveryOption.includes("Ultra Express Delivery")) {
-            deliveryCharge = 10;
-        } else if( selectedDeliveryOption.includes("Express Delivery") ){
-            deliveryCharge = 5;
-        }
+        const deliveryCharge = getDeliveryCharge();
 
         // Calculate the total cost
         const totalCostElement = document.getElementById("total-cost");
@@ -189,8 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display the delivery charge and total cost
         const deliveryChargeElement = document.getElementById("delivery-charge");
-        deliveryChargeElement.textContent = `Delivery Charge: $${deliveryCharge}`;
-        totalCostElement.textContent = `Total Cost: $${totalCost}`;
+        deliveryChargeElement.textContent = `Delivery Charge: ${formatCurrency(deliveryCharge)}`;
+        totalCostElement.textContent = `Total Cost: ${formatCurrency(totalCost, true)}`;
 
         // After updating the receipt, you can make it visible
         const receiptContainer = document.getElementById("checkout-form-container");
@@ -236,21 +231,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         deliveryDateSelect.addEventListener("change", () => {
             const selectedOption = deliveryDateSelect.value;
-            let charge = 0;
-
+            let chargeLabel = "Normal Delivery";
             if (selectedOption === "today") {
-                charge = 10;
-                deliveryCharge.textContent = "Ultra Express Delivery: $" + charge;
+                chargeLabel = "Ultra Express Delivery";
             } else if (selectedOption === "tomorrow") {
-                charge = 5;
-                deliveryCharge.textContent = "Express Delivery: $" + charge;
-            } else {
-                deliveryCharge.textContent = "Normal Delivery: $" + charge;
+                chargeLabel = "Express Delivery";
             }
-
-            // Update the total cost
-            const currentTotal = parseFloat(totalCost.textContent.split("$")[1]);
-            totalCost.textContent = "Total Cost: $" + (currentTotal + charge);
+            const charge = getDeliveryCharge();
+            deliveryCharge.textContent = `${chargeLabel}: ${formatCurrency(charge)}`;
+            totalCost.textContent = `Total Cost: ${formatCurrency(calculateTotalCost(charge), true)}`;
         });
         const paymentModeSelect = document.getElementById("payment-mode");
         const qrCodeContainer = document.getElementById("qr-code-container");

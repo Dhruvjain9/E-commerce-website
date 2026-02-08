@@ -37,7 +37,7 @@ addToCartButtons.forEach((button) => {
                 color: productElement.getAttribute('data-color'),
                 type: productElement.getAttribute('data-product-type'),
                 name: productElement.querySelector('h3').textContent,
-                price: productElement.querySelector('.product-price').textContent.replace('Price: $', ''),
+                price: parseFloat(productElement.querySelector('.product-price').textContent.replace(/[^\d.]/g, '')),
                 img: productElement.querySelector('img').getAttribute('src'),
             };
 

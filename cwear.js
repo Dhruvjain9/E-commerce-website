@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Add an input event listener to the price range input
     priceRange.addEventListener('input', () => {
-        priceDisplay.textContent = `Max Price: $${priceRange.value}`;
+        priceDisplay.textContent = `Max Price: ₹${priceRange.value}`;
     });
 
     // Add an event listener to the "Apply" button
@@ -64,8 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const color = productBlock.dataset.color;
             const priceElement = productBlock.querySelector('.product-price');
             const priceText = priceElement.innerText;
-            const priceMatch = priceText.match(/\$\d+/);
-            const price = priceMatch ? parseInt(priceMatch[0].slice(1)) : 0;
+            const price = parseInt(priceText.replace(/[^\d]/g, ''), 10) || 0;
             const isProductTypeMatch = selectedProductType === 'all' || selectedProductType === productType;
             let isColorMatch = selectedColors.includes('all') || selectedColors.includes(color);
             if (selectedColors.includes('all')||selectedColors.length===0){
