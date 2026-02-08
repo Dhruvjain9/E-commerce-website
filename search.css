@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --primary: #0f172a;
+    --accent: #4f46e5;
+    --accent-strong: #4338ca;
+    --border: #e5e7eb;
+    --shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 50%, #ffffff 100%);
+    color: var(--text);
+}
+
 /* Add styles for the right sidebar */
 .sidebar.right {
     width: 0;
@@ -5,7 +30,7 @@
     position: fixed;
     top: 0;
     right: -250px; /* Initially hidden on the right */
-    background-color: #111;
+    background-color: #0f172a;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -15,7 +40,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #1f2937;
     color: #fff;
 }
 
@@ -33,14 +58,14 @@
 
 .sidebar.right .sidebar-links a {
     display: block;
-    color: #fff;
+    color: #e2e8f0;
     padding: 10px 20px;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .sidebar.right .sidebar-links a:hover {
-    background-color: #444;
+    background-color: #1f2937;
 }
 
 /* Rest of your styles */
@@ -50,7 +75,7 @@
     background: none;
     border: none;
     font-size: 24px;
-    color: #fff;
+    color: #e2e8f0;
     cursor: pointer;
     position: absolute;
     top: 10px;
@@ -62,24 +87,29 @@
 
 /* Navbar styles */
 header {
-    background-color: #000;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(6px);
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 12px 24px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 nav {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .logo {
     max-height: 80px;
     margin-left: 20px;
-    margin-right: 150px;
+    margin-right: 40px;
 }
 
 .nav-center {
@@ -90,20 +120,29 @@ nav {
 .search-bar {
     display: flex;
     align-items: center;
+    gap: 8px;
+    background: #111827;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .search-bar input {
     border: none;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: transparent;
+    color: #f8fafc;
+    outline: none;
+    min-width: 220px;
 }
 
 .search-bar button {
-    background-color: #333;
+    background-color: var(--accent);
     color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 8px 14px;
+    border-radius: 999px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -163,22 +202,25 @@ nav {
 }
 
 search-bar button:hover {
-    background-color: #444;
+    background-color: var(--accent-strong);
 }
 
 .filter {
     float: left;
-    width: 250px; /* Adjust the width as needed */
-    background-color: #f0f0f0; /* Filter background color */
-    padding: 20px;
-    border-right: 1px solid #ccc; /* Add a border to separate filter from products */
+    width: 260px; /* Adjust the width as needed */
+    background-color: var(--card); /* Filter background color */
+    padding: 24px;
+    border-right: 1px solid var(--border); /* Add a border to separate filter from products */
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+    margin: 20px;
   }
   
   /* Filter section heading style */
   .filter h2 {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #333; /* Text color */
+    color: var(--primary); /* Text color */
   }
   
   /* Price range slider */
@@ -198,17 +240,18 @@ search-bar button:hover {
   }
   
   /* Additional styling for buttons, if needed */
-  .filter-button {
-    background-color: #007bff; /* Blue button color, you can change this */
+.filter-button {
+    background-color: var(--accent); /* Blue button color, you can change this */
     color: #fff; /* White text color */
     padding: 10px;
     border: none;
     cursor: pointer;
     width: 100%;
+    border-radius: 999px;
   }
   
   .filter-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: var(--accent-strong); /* Darker blue on hover */
   }
   
 /* Price range slider */
@@ -226,36 +269,61 @@ search-bar button:hover {
 /* Product blocks */
 .product-showcase {
   /* Ensure space to the right of the filter */
-  margin-left: 270px;
+  margin-left: 320px;
   display: flex;
   flex-wrap: wrap;
   /* Add any additional styling for product showcasing here */
+}
+
+#apply-button {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 999px;
+    margin-top: 10px;
+}
+
+#apply-button:hover {
+    background-color: var(--accent-strong);
 }
 
   
 .product-block {
     text-align: center;
     margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 200px;
-    background-color: #fff; /* Product block background color */
+    padding: 16px;
+    border: 1px solid var(--border);
+    width: 220px;
+    background-color: var(--card); /* Product block background color */
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+
+.product-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 50px rgba(15, 23, 42, 0.18);
+}
   .product-block img{
     max-width: 150px;
     max-height: 175px;
+    border-radius: 12px;
   }
   
 .add-to-cart-button {
-    background-color: #007bff; /* Blue button color, you can change this */
+    background-color: var(--accent); /* Blue button color, you can change this */
     color: #fff; /* White text color */
     padding: 10px;
     border: none;
     cursor: pointer;
+    border-radius: 999px;
   }
   
 .add-to-cart-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: var(--accent-strong); /* Darker blue on hover */
   }
 
 #added-to-cart {
@@ -267,8 +335,10 @@ search-bar button:hover {
     padding-right: 10px;
     top: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.856);
+    background-color: rgba(255, 255, 255, 0.95);
     cursor: pointer;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
   }
 #added-to-cart-text{
     font-style: bold;
@@ -277,7 +347,7 @@ search-bar button:hover {
     text-align: center;
 }
 footer {
-    background-color: #333;
+    background-color: #0f172a;
     color: #fff;
     padding: 20px 0;
     max-height: 300px;
@@ -316,13 +386,27 @@ footer {
 }
 
 .footer-section a:hover {
-    color: #3498db;
+    color: #a5b4fc;
 }
 
 .copyright {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
+    color: #cbd5f5;
+}
+
+@media (max-width: 900px) {
+    .filter {
+        float: none;
+        width: auto;
+        margin: 20px;
+    }
+
+    .product-showcase {
+        margin-left: 0;
+        justify-content: center;
+    }
 }
 /* Loader style */
 .loader {

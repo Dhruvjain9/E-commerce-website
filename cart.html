@@ -51,14 +51,14 @@
                 <div class="product-block" data-color="black" data-product-type="Casual T-Shirt" data-product-id="213" style="display: none;" hidden>
                     <img src="products/tshirt/tshirt13.jpg" alt="Black Casual T-Shirt" style="display: none;" hidden>
                     <h3 data-lang="en" style="display: none;" hidden>Black Casual T-Shirt 7</h3>
-                    <p data-lang="en" class="product-price" hidden>Price: $15</p>
+                    <p data-lang="en" class="product-price" hidden>Price: ₹15</p>
                     <button class="add-to-cart-button" data-lang="en" style="display: none;" hidden>Add to Cart</button>
                 </div>
             </section>
             <h3 id="cart-total"></h3>
             <button id="proceed-to-checkout">Proceed to Checkout</button>
     </section>
-            <div id="checkout-form-container" hidden>
+            <div id="checkout-form-container">
                 <form id="checkout-form">
                     <label for="first-name">First Name:</label>
                     <input type="text" id="first-name" name="first-name" required><br>
@@ -79,17 +79,16 @@
             
                     <label for="delivery-date">Delivery by:</label>
                     <select id="delivery-date" name="delivery-date">
-                        <option value="day-after-tomorrow">Day After Tomorrow (Normal Delivery, $0)</option>
-                        <option value="tomorrow">Tomorrow (Express Delivery, $5)</option>
-                        <option value="today">Today (Ultra Express Delivery, $10)</option>
+                        <option value="day-after-tomorrow">Day After Tomorrow (Normal Delivery, ₹0)</option>
+                        <option value="tomorrow">Tomorrow (Express Delivery, ₹5)</option>
+                        <option value="today">Today (Ultra Express Delivery, ₹10)</option>
                     </select>
                     <br>
                     <input type="submit" value="Submit">
 
-                        <p id="delivery-charge">Delivery Charge: $0</p>
-                        <p id="total-cost">Total Cost: $0</p>
-                        <button type="button" id="place-order">Place Order</button>
-                    </div>
+                    <p id="delivery-charge">Delivery Charge: ₹0</p>
+                    <p id="total-cost">Total Cost: ₹0</p>
+                    <button type="button" id="place-order">Place Order</button>
                 </form>
             </div>
             <div class="order-confirmation" id="order-confirmation"></div>
